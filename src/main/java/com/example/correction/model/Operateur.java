@@ -12,8 +12,16 @@ public class Operateur {
 
     private String operateur;
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-    public String getOperateur() { return operateur; }
-    public void setOperateur(String operateur) { this.operateur = operateur; }
+    public Long getId() { 
+        return id; 
+    }
+    public void setId(Long id) { 
+        this.id = id; 
+    }
+    public String getOperateur() { 
+        return operateur; 
+    }
+    public void setOperateur(String operateur) { 
+        this.operateur = operateur; 
+    }
 }

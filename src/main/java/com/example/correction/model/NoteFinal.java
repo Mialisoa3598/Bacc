@@ -21,12 +21,28 @@ public class NoteFinal {
     @Column(name = "note_finale")
     private Double note;
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-    public Matiere getMatiere() { return matiere; }
-    public void setMatiere(Matiere matiere) { this.matiere = matiere; }
-    public Candidat getCandidat() { return candidat; }
-    public void setCandidat(Candidat candidat) { this.candidat = candidat; }
-    public Double getNote() { return note; }
-    public void setNote(Double note) { this.note = note; }
+    public Long getId() { 
+        return id; 
+    }
+    public void setId(Long id) { 
+        this.id = id; 
+    }
+    public Matiere getMatiere() { 
+        return matiere; 
+    }
+    public void setMatiere(Matiere matiere) { 
+        this.matiere = matiere; 
+    }
+    public Candidat getCandidat() { 
+        return candidat; 
+    }
+    public void setCandidat(Candidat candidat) { 
+        this.candidat = candidat; 
+    }
+    public Double getNote() { 
+        return note; 
+    }
+    public void setNote(Double note) { 
+        this.note = note; 
+    }
 }

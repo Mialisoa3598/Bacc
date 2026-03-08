@@ -19,12 +19,28 @@ public class Candidat {
     @OneToMany(mappedBy = "candidat")
     private List<NoteFinal> notesFinals;
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-    public String getNom() { return nom; }
-    public void setNom(String nom) { this.nom = nom; }
-    public List<Note> getNotes() { return notes; }
-    public void setNotes(List<Note> notes) { this.notes = notes; }
-    public List<NoteFinal> getNotesFinals() { return notesFinals; }
-    public void setNotesFinals(List<NoteFinal> notesFinals) { this.notesFinals = notesFinals; }
+    public Long getId() { 
+        return id; 
+    }
+    public void setId(Long id) { 
+        this.id = id; 
+    }
+    public String getNom() { 
+        return nom; 
+    }
+    public void setNom(String nom) { 
+        this.nom = nom; 
+    }
+    public List<Note> getNotes() { 
+        return notes; 
+    }
+    public void setNotes(List<Note> notes) { 
+        this.notes = notes; 
+    }
+    public List<NoteFinal> getNotesFinals() { 
+        return notesFinals; 
+    }
+    public void setNotesFinals(List<NoteFinal> notesFinals) { 
+        this.notesFinals = notesFinals; 
+    }
 }
