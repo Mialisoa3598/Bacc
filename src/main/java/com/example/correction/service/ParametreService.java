@@ -7,8 +7,6 @@ import com.example.correction.repository.ResolutionRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
-// Removed unused import for MediaSize.Other
-
 @Service
 public class ParametreService {
     private final ParametreRepository repository;
@@ -27,6 +25,7 @@ public class ParametreService {
     public void delete(Long id) { repository.deleteById(id); }
 
     public Parametre getParametre(Matiere matiere, double diff) {
+        
         List<Parametre> params = repository.findByMatiere(matiere);
         for (Parametre p : params) {
             double seuil = p.getDiff();
