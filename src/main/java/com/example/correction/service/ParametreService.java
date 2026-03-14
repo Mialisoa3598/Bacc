@@ -26,7 +26,7 @@ public class ParametreService {
     public Parametre save(Parametre parametre) { return repository.save(parametre); }
     public void delete(Long id) { repository.deleteById(id); }
 
-    public Parametre getParametre(Matiere matiere, double diff) {
+    public Parametre getParametre_0(Matiere matiere, double diff) {
         List<Parametre> params = repository.findByMatiere(matiere);
         for (Parametre p : params) {
             double seuil = p.getDiff();
@@ -42,6 +42,61 @@ public class ParametreService {
         defaut.setResolution(moyenne);
         return defaut;
     }
+
+    public Parametre getParametre(Matiere matiere, double diff) {
+        List<Parametre> params = repository.findByMatiereOrderByDiffAsc(matiere);
+        Parametre meilleur = null;
+        double meilleureDistance = Double.MAX_VALUE;
+        for (Parametre p : params) {
+            double distance = Math.abs(diff - p.getDiff());
+            if (distance < meilleureDistance) {
+                meilleur = p;
+                meilleureDistance = distance;
+            }
+        }
+        if (meilleur == null) {
+            Parametre defaut = new Parametre();
+            Resolution moyenne = resolutionRepository.findByNomIgnoreCase("moyenne").orElse(null);
+            defaut.setResolution(moyenne);
+            return defaut;
+        }
+        return meilleur;
+    }
+
+    // public Parametre getParametre(Matiere matiere, double diff) {
+    //     List<Parametre> params = repository.findByMatiere(matiere);
+        
+    //     Parametre meilleur = null;
+    //     double meilleureDistance = Double.MAX_VALUE; // on commence avec une distance "infinie"
+
+    //     for (Parametre p : params) {
+    //         double distance = Math.abs(diff - p.getDiff());
+            
+    //         if (meilleur == null) {
+    //             // premier parametre, on le prend par defaut
+    //             meilleur = p;
+    //             meilleureDistance = distance;
+    //         } else if (distance < meilleureDistance) {
+    //             // ce parametre est plus proche => il devient le meilleur
+    //             meilleur = p;
+    //             meilleureDistance = distance;
+    //         } else if (distance == meilleureDistance && p.getDiff() < meilleur.getDiff()) {
+    //             // egalite de distance => on prend le seuil le plus petit
+    //             meilleur = p;
+    //         }
+    //     }
+
+    //     // si aucun parametre trouve => resolution = moyenne
+    //     if (meilleur == null) {
+    //         Parametre defaut = new Parametre();
+    //         Resolution moyenne = resolutionRepository.findByNomIgnoreCase("moyenne").orElse(null);
+    //         defaut.setResolution(moyenne);
+    //         return defaut;
+    //     }
+
+    //     return meilleur;
+    // }
+
 
     // Utility method to evaluate the comparison
     private boolean eval(double left, String operator, double right) {
