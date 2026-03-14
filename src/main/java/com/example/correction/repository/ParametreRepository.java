@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface ParametreRepository extends JpaRepository<Parametre, Long> {
     List<Parametre> findByMatiere(Matiere matiere);
+    List<Parametre> findByMatiereOrderByDiffAsc(Matiere matiere);
 }
