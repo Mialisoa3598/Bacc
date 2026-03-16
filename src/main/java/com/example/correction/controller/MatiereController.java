@@ -3,8 +3,9 @@ package com.example.correction.controller;
 import com.example.correction.model.Matiere;
 import com.example.correction.service.MatiereService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+// import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/matieres")
@@ -15,33 +16,66 @@ public class MatiereController {
         this.service = service;
     }
 
+    // @GetMapping
+    // public String list(Model model) {
+    //     model.addAttribute("matieres", service.findAll());
+    //     return "matiere/list";
+    // }
+
     @GetMapping
-    public String list(Model model) {
-        model.addAttribute("matieres", service.findAll());
-        return "matiere/list";
+    public ModelAndView list() {
+        ModelAndView mav = new ModelAndView("matiere/list");
+        mav.addObject("matieres", service.findAll());
+        return mav;
     }
+
+    // @GetMapping("/new")
+    // public String newForm(Model model) {
+    //     model.addAttribute("matiere", new Matiere());
+    //     return "matiere/form";
+    // }
 
     @GetMapping("/new")
-    public String newForm(Model model) {
-        model.addAttribute("matiere", new Matiere());
-        return "matiere/form";
+    public ModelAndView newForm() {
+        ModelAndView mav = new ModelAndView("matiere/form");
+        mav.addObject("matiere", new Matiere());
+        return mav;
     }
+
+    // @GetMapping("/edit/{id}")
+    // public String editForm(@PathVariable Long id, Model model) {
+    //     model.addAttribute("matiere", service.findById(id));
+    //     return "matiere/form";
+    // }
 
     @GetMapping("/edit/{id}")
-    public String editForm(@PathVariable Long id, Model model) {
-        model.addAttribute("matiere", service.findById(id));
-        return "matiere/form";
+    public ModelAndView editForm(@PathVariable Long id) {
+        ModelAndView mav = new ModelAndView("matiere/form");
+        mav.addObject("matiere", service.findById(id));
+        return mav;
     }
+
+    // @PostMapping("/save")
+    // public String save(@ModelAttribute Matiere matiere) {
+    //     service.save(matiere);
+    //     return "redirect:/matieres";
+    // }
 
     @PostMapping("/save")
-    public String save(@ModelAttribute Matiere matiere) {
+    public ModelAndView save(@ModelAttribute Matiere matiere) {
         service.save(matiere);
-        return "redirect:/matieres";
+        return new ModelAndView("redirect:/matieres");
     }
 
+    // @GetMapping("/delete/{id}")
+    // public String delete(@PathVariable Long id) {
+    //     service.delete(id);
+    //     return "redirect:/matieres";
+    // }
+
     @GetMapping("/delete/{id}")
-    public String delete(@PathVariable Long id) {
+    public ModelAndView delete(@PathVariable Long id) {
         service.delete(id);
-        return "redirect:/matieres";
+        return new ModelAndView("redirect:/matieres");
     }
 }
