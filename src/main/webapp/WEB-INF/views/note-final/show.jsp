@@ -11,7 +11,7 @@
 <html>
 <head><title>Note Finale</title></head>
 <body>
-    <h1>Calcul Note Finale</h1>
+    <h1>Calcul Note Finale - ETU3598</h1>
     <form action="/note-final/calculer" method="post">
         Candidat :
         <select name="idCandidat" required>

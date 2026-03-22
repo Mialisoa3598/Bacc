@@ -7,7 +7,7 @@
 <html>
 <head><title>Notes Finales</title></head>
 <body>
-    <h1>Liste des Notes Finales</h1>
+    <h1>Liste des Notes Finales - ETU3598</h1>
     <table border="1">
         <tr>
             <th>ID</th>

@@ -35,6 +35,7 @@ public class NoteFinalService {
 
         String resolution = parametre.getResolution().getNom().toLowerCase();
         double noteFinalValue;
+        
         if (resolution.contains("plus petit")) {
             noteFinalValue = notes.stream().mapToDouble(Note::getNote).min().orElse(0);
         } else if (resolution.contains("plus grand")) {

@@ -7,8 +7,6 @@ import com.example.correction.repository.ResolutionRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
-// Removed unused import for MediaSize.Other
-
 @Service
 public class ParametreService {
     private final ParametreRepository repository;
