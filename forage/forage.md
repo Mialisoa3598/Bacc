@@ -19,3 +19,12 @@ devis 1 -> 1 type ; type 1 -> plusieurs devis
 * **DetailDevis :**  devis, libelle, montant
 * **Status :**  libelle, *demandeStatus*
 * **DemandeStatus :**  *demande*, *status*, date
+
+on va faire un sprint3-bis toujours dans forage :
+Maintenant on va utiliser transactional c'est a dire:
+lorsqu'on insert demande -Transactional-> insert Demande creer (Status)
+    -> creer demande deviens transactional
+    devient : Liste DetailDevis; Objet Devis -> transactional, puis save(inserer) Devis et recup ID -> FK DetailDevis. Dans Statut Creer -> transactional -> DemandeStatut (Devis Etude Creer, Devis Etude accepter,...)
+les typedevis ne seront que 2 : Etude et Forage seulement
+
+As tu compris? logique avant de developper
