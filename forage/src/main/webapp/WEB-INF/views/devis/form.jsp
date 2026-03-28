@@ -15,10 +15,6 @@
     <h1><%= isNew ? "Ajouter" : "Modifier" %> Devis</h1>
     <form action="/devis/save" method="post">
         <input type="hidden" name="id" value="<%= isNew ? "" : devis.getId() %>"/>
-
-        Date : <input type="text" name="date" value="<%= isNew ? "" : devis.getDate() %>"/>
-        <br/>
-
         Type de Devis :
         <select name="typeDevis.id" required>
             <option value="">Selectionner</option>

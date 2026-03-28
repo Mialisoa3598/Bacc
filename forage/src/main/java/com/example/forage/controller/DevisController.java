@@ -53,7 +53,7 @@ public class DevisController {
 
     @PostMapping("/save")
     public ModelAndView save(@ModelAttribute Devis devis) {
-        devisService.save(devis);
+        devisService.createDevis(devis);
         return new ModelAndView("redirect:/devis");
     }
 
