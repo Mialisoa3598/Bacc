@@ -59,3 +59,7 @@ FROM t_devis d
 JOIN t_type_devis td ON d.id_type_devis = td.id_type_devis
 JOIN t_detail_devis dd ON dd.id_devis = d.id_devis
 GROUP BY d.id_devis, td.libelle;
+
+ALTER TABLE t_detail_devis DROP COLUMN montant;
+ALTER TABLE t_detail_devis ADD COLUMN pu DECIMAL NOT NULL;
+ALTER TABLE t_detail_devis ADD COLUMN qte INTEGER NOT NULL;
