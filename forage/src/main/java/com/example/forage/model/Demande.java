@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "t_demande")
 public class Demande {
@@ -20,9 +22,11 @@ public class Demande {
     @JoinColumn(name = "id_client")
     private Client client;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "demande")
     private List<Devis> devis;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "demande")
     private List<DemandeStatus> demandeStatuses;
 

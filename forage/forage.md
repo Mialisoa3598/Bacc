@@ -27,4 +27,18 @@ lorsqu'on insert demande -Transactional-> insert Demande creer (Status)
     devient : Liste DetailDevis; Objet Devis -> transactional, puis save(inserer) Devis et recup ID -> FK DetailDevis. Dans Statut Creer -> transactional -> DemandeStatut (Devis Etude Creer, Devis Etude accepter,...)
 les typedevis ne seront que 2 : Etude et Forage seulement
 
-As tu compris? logique avant de developper
+
+Sprint 4 :
+Toujours en Transactional.
+Ajout Devis se fera comme ceci :
+    - Select Demande : (exemple Demande 2) 
+        -> Puis Details demande s'affiche (utiliser ajax qui fait appel a un api controller), bien sur en fonction du select demande
+    - Type devis : 
+        -> Etude, Forage
+    - Ligne ajout Detail devis : Libelle , P.U, Montant(pas stocker dans la base mais calculer automatique js) avec bouton + pour ajout autrer ligne et un x pour supprimer cette ligne (js)
+    - Montant Total (pas stocker dans la base mais calculer automatique js)
+les modifications dans la base :
+plus de montant ny montanttotal dans devis et detaisdevis 
+detailsDevis ajout de PU, Qte
+
+As tu compris? logique avant de developper';

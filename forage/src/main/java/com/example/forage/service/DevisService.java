@@ -12,13 +12,17 @@ public class DevisService {
     private final DevisRepository repository;
     private final DemandeStatusRepository demandeStatusRepository;
     private final StatusRepository statusRepository;
+    private final DetailDevisRepository detailDevisRepository;
 
     public DevisService(DevisRepository repository,
                         DemandeStatusRepository demandeStatusRepository,
-                        StatusRepository statusRepository) {
+                        StatusRepository statusRepository,
+                        DetailDevisRepository detailDevisRepository) {
         this.repository = repository;
         this.demandeStatusRepository = demandeStatusRepository;
         this.statusRepository = statusRepository;
+
+        this.detailDevisRepository = detailDevisRepository;
     }
 
     public List<Devis> findAll() { 
@@ -30,10 +34,18 @@ public class DevisService {
     public void delete(Long id) { 
         repository.deleteById(id); 
     }
+    public Devis update(Devis devis) {
+        Devis saveDevis = repository.save(devis);
+        return saveDevis;
+    }
 
     @Transactional
-    public Devis createDevis(Devis devis) {
+    public Devis createDevis(Devis devis, List<DetailDevis> details) {
         Devis saveDevis = repository.save(devis);
+        for (DetailDevis detail : details) {
+            detail.setDevis(saveDevis);
+            detailDevisRepository.save(detail);
+        }
 
         String typeLibelle = saveDevis.getTypeDevis().getLibelle();
         String statusLibelle = "devis " + typeLibelle.toLowerCase() + " cree";

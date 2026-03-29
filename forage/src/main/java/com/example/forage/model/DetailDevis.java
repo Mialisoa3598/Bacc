@@ -11,7 +11,12 @@ public class DetailDevis {
     private Long id;
 
     private String libelle;
-    private Double montant;
+
+    @Column(name = "pu")
+    private Double pu;
+
+    @Column(name = "qte")
+    private Integer qte;
 
     @ManyToOne
     @JoinColumn(name = "id_devis")
@@ -29,11 +34,17 @@ public class DetailDevis {
     public void setLibelle(String libelle) { 
         this.libelle = libelle; 
     }
-    public Double getMontant() { 
-        return montant; 
+    public Double getPu() { 
+        return pu; 
     }
-    public void setMontant(Double montant) { 
-        this.montant = montant; 
+    public void setPu(Double pu) { 
+        this.pu = pu; 
+    }
+    public Integer getQte() { 
+        return qte; 
+    }
+    public void setQte(Integer qte) { 
+        this.qte = qte; 
     }
     public Devis getDevis() { 
         return devis; 
