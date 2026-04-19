@@ -3,6 +3,8 @@ package com.example.forage.model;
 import jakarta.persistence.*;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "t_status")
 public class Status {
@@ -13,6 +15,7 @@ public class Status {
 
     private String libelle;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "status")
     private List<DemandeStatus> demandeStatuses;
 

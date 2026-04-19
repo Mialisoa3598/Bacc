@@ -2,6 +2,9 @@ package com.example.forage.service;
 import com.example.forage.model.Demande;
 import com.example.forage.model.DemandeStatus;
 import com.example.forage.repository.DemandeStatusRepository;
+
+// import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
@@ -41,4 +44,16 @@ public class DemandeStatusService {
         // si la liste est vide, la demande n'a pas encore de statut
         return historique.isEmpty() ? null : historique.get(0);
     }
+
+        public DemandeStatus update(Integer id, String observation, String date) {
+            DemandeStatus ds = repository.findById(id.longValue()).orElse(null);
+            ds.setObservation(observation);
+            ds.setDate(LocalDateTime.parse(date));
+            return repository.save(ds);
+        }
+        public List<DemandeStatus> getHistoriqueByIdDemande(Long idDemande) {
+            Demande demande = new Demande();
+            demande.setId(idDemande);
+            return repository.findByDemandeOrderByDateDesc(demande);
+        }
 }

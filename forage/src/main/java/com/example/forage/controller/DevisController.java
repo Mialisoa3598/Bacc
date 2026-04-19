@@ -99,4 +99,11 @@ public class DevisController {
         devisService.delete(id);
         return new ModelAndView("redirect:/devis");
     }
+
+    @GetMapping("/montant/{id}")
+    public ModelAndView voirMontant(@PathVariable Long id) {
+        ModelAndView mav = new ModelAndView("devis/montant");
+        mav.addObject("montantTotal", devisService.getMontantTotal(id));
+        return mav;
+    }
 }

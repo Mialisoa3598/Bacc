@@ -63,3 +63,5 @@ GROUP BY d.id_devis, td.libelle;
 ALTER TABLE t_detail_devis DROP COLUMN montant;
 ALTER TABLE t_detail_devis ADD COLUMN pu DECIMAL NOT NULL;
 ALTER TABLE t_detail_devis ADD COLUMN qte INTEGER NOT NULL;
+
+ALTER TABLE t_demande_status ADD COLUMN observation VARCHAR(255);
