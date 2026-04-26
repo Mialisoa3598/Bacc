@@ -4,7 +4,8 @@ import com.example.forage.model.*;
 import com.example.forage.repository.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import java.time.LocalDate;
+// import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -62,9 +63,18 @@ public class DevisService {
         DemandeStatus demandeStatus = new DemandeStatus();
         demandeStatus.setDemande(saveDevis.getDemande());
         demandeStatus.setStatus(status);
-        demandeStatus.setDate(LocalDate.now());
+        demandeStatus.setDate(LocalDateTime.now());
         demandeStatusRepository.save(demandeStatus);
 
         return saveDevis;
     }
+    
+    public Double getMontantTotal(Long idDevis) {
+        return repository.sommeMontantDevis(idDevis);
+    }
+
+            public List<Devis> findByDemande(Demande demande) {
+                return repository.findByDemande(demande);
+            }
+    
 }

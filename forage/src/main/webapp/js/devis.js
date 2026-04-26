@@ -34,21 +34,73 @@ function supprimerLigne(btn) {
     calculerTotal();
 }
 
-function calculerMontant(input) {
-    const row = input.closest("tr");
+function calculMontantLigne(row) {
     const pu = parseFloat(row.querySelector("[name='pus']").value) || 0;
     const qte = parseInt(row.querySelector("[name='qtes']").value) || 0;
-    row.querySelector(".montantLigne").innerText = (pu * qte).toLocaleString() + " Ar";
+
+    // Remise de 10% si PU >= 1 000 000
+    const puFinal = pu >= 1000000 ? pu * 0.9 : pu;
+
+    return puFinal * qte;
+}
+
+function calculerMontant(input) {
+    const row = input.closest("tr");
+
+    let pu = parseFloat(row.querySelector("[name='pus']").value) || 0;
+    let qte = parseInt(row.querySelector("[name='qtes']").value) || 0;
+
+    // remise simple
+    if (pu >= 1000000) {
+        pu = pu * 0.9;
+    }
+
+    let montant = pu * qte;
+
+    row.querySelector(".montantLigne").innerText = montant + " Ar";
+
     calculerTotal();
 }
 
 function calculerTotal() {
     const rows = document.querySelectorAll("#tableDetails tr:not(:first-child)");
     let total = 0;
+
     rows.forEach(row => {
-        const pu = parseFloat(row.querySelector("[name='pus']").value) || 0;
-        const qte = parseInt(row.querySelector("[name='qtes']").value) || 0;
+        let pu = parseFloat(row.querySelector("[name='pus']").value) || 0;
+        let qte = parseInt(row.querySelector("[name='qtes']").value) || 0;
+
+        // même logique de remise
+        if (pu >= 1000000) {
+            pu = pu * 0.9;
+        }
+
         total += pu * qte;
     });
-    document.getElementById("montantTotal").innerText = total.toLocaleString();
+
+    document.getElementById("montantTotal").innerText = total + " Ar";
 }
+
+
+// function calculerMontant(input) {
+//     const row = input.closest("tr");
+//     const pu = parseFloat(row.querySelector("[name='pus']").value) || 0;
+//     const qte = parseInt(row.querySelector("[name='qtes']").value) || 0;
+//     row.querySelector(".montantLigne").innerText = (pu * qte).toLocaleString() + " Ar";
+//     calculerTotal();
+// }
+
+// function calculerTotal() {
+//     const rows = document.querySelectorAll("#tableDetails tr:not(:first-child)");
+//     let total = 0;
+//     rows.forEach(row => {
+//         const pu = parseFloat(row.querySelector("[name='pus']").value) || 0;
+//         const qte = parseInt(row.querySelector("[name='qtes']").value) || 0;
+//         total += pu * qte;
+//     });
+//     document.getElementById("montantTotal").innerText = total.toLocaleString();
+// }
+
+window.onload = function () {
+    calculerTotal();
+};

@@ -1,12 +1,14 @@
 package com.example.forage.service;
 
+import com.example.forage.model.Client;
 import com.example.forage.model.Demande;
 import com.example.forage.model.DemandeStatus;
 import com.example.forage.model.Status;
 import com.example.forage.repository.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import java.time.LocalDate;
+// import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -47,10 +49,15 @@ public class DemandeService {
 
         DemandeStatus demandeStatus = new DemandeStatus();
         demandeStatus.setDemande(saveDemande);
-        demandeStatus.setStatus(statusCree);
-        demandeStatus.setDate(LocalDate.now());
+        demandeStatus.setStatus(statusCree); 
+        demandeStatus.setDate(LocalDateTime.now());
         demandeStatusRepository.save(demandeStatus);
+
 
         return saveDemande;
     }
+
+                public List<Demande> findByClient(Client client) {
+                    return repository.findByClient(client);
+                }
 }

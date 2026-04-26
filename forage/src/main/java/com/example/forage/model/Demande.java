@@ -66,6 +66,11 @@ public class Demande {
     public void setDevis(List<Devis> devis) { 
         this.devis = devis; 
     }
-    public List<DemandeStatus> getDemandeStatuses() { return demandeStatuses; }
-    public void setDemandeStatuses(List<DemandeStatus> demandeStatuses) { this.demandeStatuses = demandeStatuses; }
+    
+    public List<DemandeStatus> getDemandeStatuses() { 
+        return demandeStatuses; 
+    }
+    public void setDemandeStatuses(List<DemandeStatus> demandeStatuses) { 
+        this.demandeStatuses = demandeStatuses; 
+    }
 }
