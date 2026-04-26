@@ -2,13 +2,6 @@ INSERT INTO t_client (nom, contact) VALUES
 ('Client1', '034 00 000 01'),
 ('Client2', '034 00 000 02');
 
--- INSERT INTO t_status (libelle) VALUES
--- ('cree'),
--- ('accepte'),
--- ('refuse'),
--- ('commence'),
--- ('termine');
-
 INSERT INTO t_status (libelle) VALUES
 ('accepte'),
 ('cree'),

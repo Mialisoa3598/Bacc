@@ -16,22 +16,41 @@ function loadHistorique(idDemande) {
             data.forEach(ds => {
                 const tr = document.createElement("tr");
             
-                tr.innerHTML = `
-                    <td>${ds.status.libelle}</td>
-                    <td>
-                        <input type="datetime-local" id="date_${ds.id}" 
-                            value="${ds.date.substring(0, 16)}"/>
-                    </td>
-                    <td>
-                        <input type="text" id="obs_${ds.id}" 
-                            value="${ds.observation != null ? ds.observation : ''}"/>
-                    </td>
-                    <td>
-                        <button type="button" onclick="updateStatus(${ds.id})">
-                            Enregistrer
-                        </button>
-                    </td>
-                `;
+                // tr.innerHTML = `
+                //     <td>${ds.status.libelle}</td>
+                //     <td>
+                //         <input type="datetime-local" id="date_${ds.id}" 
+                //             value="${ds.date.substring(0, 16)}"/>
+                //     </td>
+                //     <td>
+                //         <input type="text" id="obs_${ds.id}" 
+                //             value="${ds.observation != null ? ds.observation : ''}"/>
+                //     </td>
+                //     <td>
+                //         <button type="button" onclick="updateStatus(${ds.id})">
+                //             Enregistrer
+                //         </button>
+                //     </td>
+                // `;
+
+                    tr.innerHTML = `
+                        <td>${ds.status.libelle}</td>
+                        <td>
+                            <input type="datetime-local" id="date_${ds.id}" 
+                                value="${ds.date.substring(0, 16)}"/>
+                        </td>
+                        <td>
+                            <input type="text" id="obs_${ds.id}" 
+                                value="${ds.observation != null ? ds.observation : ''}"/>
+                        </td>
+                        <td>${ds.dureeSimpleFormatted != null ? ds.dureeSimpleFormatted : '-'}</td>
+                        <td>${ds.dureeComplexeFormatted != null ? ds.dureeComplexeFormatted : '-'}</td>
+                        <td>
+                            <button type="button" onclick="updateStatus(${ds.id})">
+                                Enregistrer
+                            </button>
+                        </td>
+                    `;
                 tbody.appendChild(tr);
             });
             document.getElementById("historique").style.display = "block";
