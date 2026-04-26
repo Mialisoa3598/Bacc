@@ -60,4 +60,15 @@ public class DemandeStatus {
         public void setObservation(String observation) { 
             this.observation = observation; 
         }
+
+                        @Column(name = "duree_simple")
+                        private Integer dureeSimple;
+
+                        @Column(name = "duree_complexe")
+                        private Integer dureeComplexe;
+
+                        public Integer getDureeSimple() { return dureeSimple; }
+                        public void setDureeSimple(Integer dureeSimple) { this.dureeSimple = dureeSimple; }
+                        public Integer getDureeComplexe() { return dureeComplexe; }
+                        public void setDureeComplexe(Integer dureeComplexe) { this.dureeComplexe = dureeComplexe; }
 }

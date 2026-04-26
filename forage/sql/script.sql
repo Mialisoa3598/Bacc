@@ -65,3 +65,23 @@ ALTER TABLE t_detail_devis ADD COLUMN pu DECIMAL NOT NULL;
 ALTER TABLE t_detail_devis ADD COLUMN qte INTEGER NOT NULL;
 
 ALTER TABLE t_demande_status ADD COLUMN observation VARCHAR(255);
+
+            ALTER TABLE t_demande_status ADD COLUMN duree_simple INTEGER;
+            ALTER TABLE t_demande_status ADD COLUMN duree_complexe INTEGER;
+
+            CREATE TABLE t_parametre_travail (
+                id SERIAL PRIMARY KEY,
+                heure_debut TIME NOT NULL,
+                heure_fin TIME NOT NULL,
+                travail_samedi BOOLEAN DEFAULT FALSE,
+                travail_dimanche BOOLEAN DEFAULT FALSE
+            );
+
+            CREATE TABLE t_jour_exception (
+                id SERIAL PRIMARY KEY,
+                date_exception DATE NOT NULL,
+                description VARCHAR(255)
+            );
+
+            INSERT INTO t_parametre_travail (heure_debut, heure_fin, travail_samedi, travail_dimanche)
+            VALUES ('08:00', '17:00', false, false);

@@ -61,6 +61,8 @@
                 <th>Status</th>
                 <th>Date</th>
                 <th>Observation</th>
+                    <th>Durée Simple</th>
+                    <th>Durée Complexe</th>
                 <th>Action</th>
             </tr>
             <tbody id="tbodyHistorique"></tbody>
