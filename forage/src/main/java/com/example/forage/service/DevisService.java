@@ -72,5 +72,9 @@ public class DevisService {
     public Double getMontantTotal(Long idDevis) {
         return repository.sommeMontantDevis(idDevis);
     }
+
+            public List<Devis> findByDemande(Demande demande) {
+                return repository.findByDemande(demande);
+            }
     
 }

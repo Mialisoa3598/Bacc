@@ -1,5 +1,6 @@
 package com.example.forage.service;
 
+import com.example.forage.model.Client;
 import com.example.forage.model.Demande;
 import com.example.forage.model.DemandeStatus;
 import com.example.forage.model.Status;
@@ -55,4 +56,8 @@ public class DemandeService {
 
         return saveDemande;
     }
+
+                public List<Demande> findByClient(Client client) {
+                    return repository.findByClient(client);
+                }
 }

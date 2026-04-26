@@ -56,4 +56,12 @@ public class DemandeStatusService {
             demande.setId(idDemande);
             return repository.findByDemandeOrderByDateDesc(demande);
         }
+
+                public List<Demande> getDemandesByStatus(Long idStatus) {
+                return repository.findAll().stream()
+                        .filter(ds -> ds.getStatus().getId().equals(idStatus))
+                        .map(ds -> ds.getDemande())
+                        .distinct()
+                        .collect(java.util.stream.Collectors.toList());
+            }
 }
